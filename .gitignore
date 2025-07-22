@@ -1,0 +1,6 @@
+node_modules
+.env
+dist
+.replit
+.vscode
+.DS_Store
