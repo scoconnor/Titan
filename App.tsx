@@ -1,48 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
 import DebtorProfileViewer from "./pages/DebtorProfileViewer";
 
-// Placeholder Components
+// Placeholder Components — replace with real components as you build
 const ContactCenter = () => <div className="p-4">Omni-Channel Contact Center (Placeholder)</div>;
 const PaymentTools = () => <div className="p-4">Payment & Arrangement Tools (Placeholder)</div>;
 const ComplianceControls = () => <div className="p-4">Compliance Controls (Placeholder)</div>;
 
-const LoginPage = () => {
-  return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-sm">
-        <h2 className="text-2xl font-bold mb-6 text-center">Titan Login</h2>
-        <form className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Username</label>
-            <input
-              type="text"
-              className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Enter your username"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Password</label>
-            <input
-              type="password"
-              className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Enter your password"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition"
-          >
-            Log In
-          </button>
-        </form>
-      </div>
-    </div>
-  );
-};
-
+// Simple mock auth check (replace later with real logic)
 const isAuthenticated = () => {
-  // Placeholder logic; replace with real auth check
   return localStorage.getItem("employeeToken") !== null;
 };
 
@@ -56,22 +23,18 @@ export default function App() {
           path="/debtor/:id"
           element={isAuthenticated() ? <DebtorProfileViewer /> : <Navigate to="/login" />}
         />
-
         <Route
           path="/contact-center"
           element={isAuthenticated() ? <ContactCenter /> : <Navigate to="/login" />}
         />
-
         <Route
           path="/payments"
           element={isAuthenticated() ? <PaymentTools /> : <Navigate to="/login" />}
         />
-
         <Route
           path="/compliance"
           element={isAuthenticated() ? <ComplianceControls /> : <Navigate to="/login" />}
         />
-
         <Route
           path="*"
           element={<Navigate to={isAuthenticated() ? "/contact-center" : "/login"} />}
