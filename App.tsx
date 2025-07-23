@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import DebtorProfileViewer from "./pages/DebtorProfileViewer";
+import Logout from "./pages/Logout";
+
 
 // Placeholder Components — replace with real components as you build
 const ContactCenter = () => <div className="p-4">Omni-Channel Contact Center (Placeholder)</div>;
@@ -38,6 +40,7 @@ export default function App() {
         <Route
           path="*"
           element={<Navigate to={isAuthenticated() ? "/contact-center" : "/login"} />}
+          <Route path="/logout" element={<Logout />} />
         />
       </Routes>
     </Router>
