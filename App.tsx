@@ -4,7 +4,6 @@ import LoginPage from "./pages/LoginPage";
 import DebtorProfileViewer from "./pages/DebtorProfileViewer";
 import Logout from "./pages/Logout";
 
-
 // Placeholder Components — replace with real components as you build
 const ContactCenter = () => <div className="p-4">Omni-Channel Contact Center (Placeholder)</div>;
 const PaymentTools = () => <div className="p-4">Payment & Arrangement Tools (Placeholder)</div>;
@@ -20,6 +19,7 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/logout" element={<Logout />} />
 
         <Route
           path="/debtor/:id"
@@ -37,10 +37,11 @@ export default function App() {
           path="/compliance"
           element={isAuthenticated() ? <ComplianceControls /> : <Navigate to="/login" />}
         />
+
+        {/* Default catch-all */}
         <Route
           path="*"
           element={<Navigate to={isAuthenticated() ? "/contact-center" : "/login"} />}
-          <Route path="/logout" element={<Logout />} />
         />
       </Routes>
     </Router>
