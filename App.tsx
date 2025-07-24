@@ -38,7 +38,7 @@ export default function App() {
           element={isAuthenticated() ? <ComplianceControls /> : <Navigate to="/login" />}
         />
 
-        {/* Default catch-all */}
+        {/* Catch-all route (e.g. visiting root or unknown route) */}
         <Route
           path="*"
           element={<Navigate to={isAuthenticated() ? "/contact-center" : "/login"} />}
